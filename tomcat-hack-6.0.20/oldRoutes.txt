@@ -1,0 +1,33 @@
+Routing tables
+
+Internet:
+Destination        Gateway            Flags        Refs      Use   Netif Expire
+default            192.168.1.1        UGSc           21        0     en1
+default            180.166.126.91     UGScI           4        0    ppp0
+127                127.0.0.1          UCS             0        0     lo0
+127.0.0.1          127.0.0.1          UH             15   102567     lo0
+169.254            link#5             UCS             0        0     en1
+180.166.126.91     192.168.1.1        UGHS            0       21     en1
+192.168.1          link#5             UCS             2        0     en1
+192.168.1.1        9c:21:6a:bc:2b:72  UHLWIir        23      188     en1   1152
+192.168.1.102      127.0.0.1          UHS             0        0     lo0
+192.168.1.255      ff:ff:ff:ff:ff:ff  UHLWbI          0        4     en1
+192.168.189        ppp0               USc             0        0    ppp0
+
+Internet6:
+Destination                             Gateway                         Flags         Netif Expire
+::1                                     ::1                             UHL             lo0
+fda9:f079:7049:cf21::/64                fe80::d531:ffeb:9928:f48d%utun0 Uc            utun0
+fda9:f079:7049:cf21:d531:ffeb:9928:f48d link#10                         UHL             lo0
+fe80::%lo0/64                           fe80::1%lo0                     UcI             lo0
+fe80::1%lo0                             link#1                          UHLI            lo0
+fe80::%en1/64                           link#5                          UCI             en1
+fe80::6aa8:6dff:fe33:6324%en1           68:a8:6d:33:63:24               UHLI            lo0
+fe80::%utun0/64                         fe80::d531:ffeb:9928:f48d%utun0 UcI           utun0
+fe80::d531:ffeb:9928:f48d%utun0         link#10                         UHLI            lo0
+ff01::%lo0/32                           ::1                             UmCI            lo0
+ff01::%en1/32                           link#5                          UmCI            en1
+ff01::%utun0/32                         fe80::d531:ffeb:9928:f48d%utun0 UmCI          utun0
+ff02::%lo0/32                           ::1                             UmCI            lo0
+ff02::%en1/32                           link#5                          UmCI            en1
+ff02::%utun0/32                         fe80::d531:ffeb:9928:f48d%utun0 UmCI          utun0

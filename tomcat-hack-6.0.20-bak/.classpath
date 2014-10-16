@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="ANT_HOME"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-antlr.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-bcel.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-bsf.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-log4j.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-oro.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-regexp.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-resolver.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-apache-xalan2.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-commons-logging.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-commons-net.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-jai.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-javamail.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-jdepend.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-jmf.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-jsch.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-junit.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-junit4.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-netrexx.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-swing.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant-testutil.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/apache-ant-1.9.3/lib/ant.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/tomcat-dep-lib/jaxrpc-api-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/tomcat-dep-lib/wsdl4j-1.6.3.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/tomcat-dep-lib/tomcat6-deps/jdt/jdtCompilerAdapter.jar"/>
+	<classpathentry kind="lib" path="/Users/huguoan/projects/open-project/tomcat-dep-lib/tomcat6-deps/jdt/jasper-jdt.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,19 @@
+@@ -14,15 +14,16 @@
+  */
+ package org.apache.commons.collections.iterators;
+ 
++import org.apache.commons.collections.ResettableListIterator;
++
+ import java.util.Iterator;
+ import java.util.LinkedList;
+-import java.util.ListIterator;
+ import java.util.NoSuchElementException;
+ 
+ /**
+  * As the wrapped Iterator is traversed, ListIteratorWrapper
+  * builds a LinkedList of its values, permitting all required
+- * operations of ListIterator.
++ * operations of ResettableListIterator.
+  * 
+  * @since Commons Collections 2.1
+  * @version $Revision$ $Date$

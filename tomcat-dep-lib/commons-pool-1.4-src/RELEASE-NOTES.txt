@@ -1,0 +1,96 @@
+
+                         Commons POOL Version 1.4 
+                                 RELEASE NOTES
+      
+This is a maintenance release including numerous bug fixes. This release is 
+source and binary compatible with version 1.3 of commons pool, but there are 
+some behavior changes introduced to resolve bugs, remove ambiguity or improve 
+robustness. Among these are the change in default behavior of 
+GenericObjectPool and GenericKeyedObjectPool from FIFO back to LIFO queues (as 
+in 1.2 and earlier). The LIFO/FIFO behavior is now configurable. Some of the 
+extra synchronization included in version 1.3 was removed / refactored to 
+improve performance. The javadoc has also been made more complete and 
+explicit. See the detailed list of changes below for specifics on fixed bugs 
+and behavior changes in Commons Pool 1.4. This version of Commons Pool depends 
+only on JDK version 1.3 or higher. Classes implementing pools are all intended 
+to be threadsafe. 
+      
+                             SUMMARY OF CHANGES
+
+BUG FIXES
+
+o Fixed constructor which was ignoring maxTotal parameter: 
+  GenericKeyedObjectPool(KeyedPoolableObjectFactory factory, int maxActive, 
+  byte whenExhaustedAction, long maxWait, int maxIdle, int maxTotal, boolean 
+  testOnBorrow, boolean testOnReturn, long timeBetweenEvictionRunsMillis, int 
+  numTestsPerEvictionRun, long minEvictableIdleTimeMillis, boolean 
+  testWhileIdle) 
+o Changed StackKeyedObjectPool to discard stalest, not freshest, idle object 
+  when maxSleeping is reached. 
+o Allowed blocked threads in GenericObjectPool borrowObject to be 
+  interrupted. Issue: POOL-102. Thanks to John Sumsion. 
+o Fixes to address idle object eviction and LIFO/FIFO behavior reported in 
+  POOL-86. Made LIFO/FIFO behavior configurable for GenericObjectPool and 
+  GenericKeyedObjectPool, with default set back to LIFO (reverting to 1.2 
+  behavior). Fixed GOP, GKOP evict method and added tests to ensure objects 
+  are visited in oldest-to-youngest order. Changed backing store for GOP, 
+  GKOP pools back to Commons Collections CursorableLinkedList (brought this 
+  class in, repackaged with package scope). Issue: POOL-86. 
+o Changed the default setting for Config.softMinEvictableIdleTimeMillis to 
+  GenericObjectPool.DEFAULT_SOFT_MIN_EVICTABLE_IDLE_TIME_MILLIS (was being 
+  incorrectly defaulted to DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS). Issue: 
+  POOL-110. Thanks to Alexander Pogrebnyak. 
+o Added a wrapper for the shared idle object eviction timer for all pools. 
+  The wrapper class wraps the Timer and keeps track of how many pools are 
+  using it. If no pools are using the timer, it is canceled. This prevents a 
+  thread being left running which, in application server environments, can 
+  lead to memory leaks and/or prevent applications from shutting down or 
+  reloading cleanly. Issue: POOL-97. Thanks to Mark Thomas. 
+o Reduced synchronization in GenericObjectPool, GenericKeyedObjectPool. 
+  Factory method activations within synchronized blocks were causing 
+  performance problems in DBCP and other applications where factory methods 
+  could block. Fixes both POOL-93 and POOL-108. Issue: POOL-93. Thanks to 
+  Mark Thomas. 
+o Made _testOnBorrow, _testOnReturn volatile and removed synchronization in 
+  associated getters and setters in GenericObjectPool, 
+  GenericKeyedObjectPool. Made getNumIdle synchronized in 
+  StackKeyedObjectPool. Issue: POOL-113. 
+o Fixed an error in the GenericKeyedObjectPool constructor that takes a 
+  Config instance as a parameter. The minIdle setting in the Config was being 
+  ignored by the constructor. Issue: POOL-116. 
+o Made behavior on instance validation failure consistent across pools, 
+  eliminating possible infinite loops in StackObjectPool, 
+  StackKeyedObjectPool, SoftReferenceObjectPool when factory fails to create 
+  valid objects. Issue: POOL-117. 
+
+BEHAVIOR CHANGES
+
+o When no factory has been defined, addObject now throws 
+  IllegalStateExecption instead of NullPointerException for all pools. 
+o SoftReferenceObjectPool. Improved the accuracy of getNumIdle by "pruning" 
+  references to objects that have been garbage collected. 
+o GenericObjectPool, GenericKeyedObjectPool, SoftReferenceObjectPool, 
+  StackObjectPool. Eliminated IllegalStateExceptions when the following 
+  operations are attempted on a closed pool: getNumActive, getNumIdle, 
+  returnObject, invalidateObject. In each case, the operation is allowed to 
+  proceed, reporting the state of the pool that is being shut down, or 
+  destroying objects returning to the closed pool. 
+o StackObjectPool, SoftReferenceObjectPool, GenericKeyedObjectPool. Allowed 
+  borrowObject to continue (either examining additional idle instances or 
+  with makeObject) when an exception is encountered activating an idle object 
+  instead of propagating the exception to the client. Also made addObject 
+  propagate (not swallow) exceptions when passivating newly created 
+  instances. 
+o StackKeyedObjectPool. Added validation check for objects returned from 
+  borrowObject. 
+o BaseObjectPool, BaseKeyedObjectPool. Instead of throwing 
+  UnsupportedOperationException, the base class implementations of getNumIdle 
+  and getNumActive return negative values. The base implementation of close 
+  in BaseObjectPool no longer throws IllegalStateException when invoked on an 
+  already closed pool. 
+
+For more information on Commons Pool, see
+http://commons.apache.org/pool/
+       
+
+      
